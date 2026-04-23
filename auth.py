@@ -6,6 +6,9 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 import models
 from database import get_db
+import os
+
+SECRET_KEY = os.getenv("SECRET_KEY", "fallback-for-local-dev")
 
 SECRET_KEY = "your-secret-key-change-this-in-production"
 ALGORITHM = "HS256"
@@ -44,6 +47,3 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     if user is None:
         raise credentials_exception
     return user
-
-import os
-SECRET_KEY = os.getenv("SECRET_KEY", "fallback-for-local-dev")
