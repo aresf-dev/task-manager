@@ -44,3 +44,6 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     if user is None:
         raise credentials_exception
     return user
+
+import os
+SECRET_KEY = os.getenv("SECRET_KEY", "fallback-for-local-dev")
