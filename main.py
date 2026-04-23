@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 import models, schemas
@@ -8,8 +9,6 @@ from auth import hash_password, verify_password, create_access_token, get_curren
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Task Manager API")
-
-from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
