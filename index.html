@@ -20,7 +20,7 @@
     .card {
       background: white;
       border-radius: 12px;
-      border: 1px solid #e5e5e5;
+      border: 0px solid #e5e5e5;
       width: 100%;
       max-width: 480px;
       overflow: hidden;
@@ -28,7 +28,8 @@
 
     .header {
       padding: 1.25rem 1.5rem;
-      border-bottom: 1px solid #e5e5e5;
+      border: 5px solid black;
+      border-radius: 10px 10px 0px 0px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -44,22 +45,35 @@
       color: #166534;
     }
 
-    .auth-section { padding: 1.5rem; display: flex; flex-direction: column; gap: 10px; }
+    .auth-section { padding: 1.5rem; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 10px;
+      border: 5px solid black;
+      border-top: 0px;
+      border-radius: 0px 0px 10px 10px;
+    }
+
+    #app-view {
+      border: 5px solid black;
+      border-top: 0px;
+      border-radius: 0px 0px 10px 10px;
+    }
 
     input[type="text"], input[type="password"] {
       width: 100%;
       padding: 8px 12px;
-      border: 1px solid #e5e5e5;
+      border: 3px solid silver;
       border-radius: 8px;
       font-size: 14px;
       outline: none;
     }
 
-    input:focus { border-color: #a3a3a3; }
+    input:focus { border-color: darkblue; }
 
     .btn {
       padding: 8px 16px;
-      border: 1px solid #e5e5e5;
+      border: 1px solid black;
       border-radius: 8px;
       background: white;
       font-size: 13px;
@@ -76,7 +90,7 @@
 
     .add-row {
       padding: 1rem 1.5rem;
-      border-bottom: 1px solid #e5e5e5;
+      border-bottom: 1px solid silver;
       display: flex;
       gap: 8px;
     }
@@ -91,7 +105,7 @@
       gap: 10px;
       padding: 0.6rem 0.75rem;
       border-radius: 8px;
-      border: 1px solid #e5e5e5;
+      border: 1px solid teal;
     }
 
     .task-circle {
@@ -104,14 +118,14 @@
 
     .task-circle.done { border-color: #86efac; background: #dcfce7; }
 
-    .task-title { font-size: 14px; flex: 1; }
+    .task-title { font-size: 14px; flex: 1;}
     .task-title.done { text-decoration: line-through; color: #a3a3a3; }
 
     .footer {
       padding: 0.75rem 1.5rem;
       border-top: 1px solid #e5e5e5;
       font-size: 12px;
-      color: #a3a3a3;
+      color: black;
     }
 
     .error { font-size: 13px; color: #dc2626; text-align: center; }
@@ -164,6 +178,7 @@
     });
     const data = await res.json();
     if (!res.ok) return showAuthError(data.detail || "Registration failed");
+    else return showAuthError(data.detail || "Registration complete");
     token = data.access_token;
     showApp(username);
   }
