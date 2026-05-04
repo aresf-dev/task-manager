@@ -1,8 +1,11 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class TaskCreate(BaseModel):
     title: str
     description: str = ""
+    due_date: Optional[str] = None
+    priority: str = "medium"
 
 class TaskResponse(TaskCreate):
     id: int

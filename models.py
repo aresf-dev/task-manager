@@ -8,6 +8,8 @@ class Task(Base):
     title = Column(String, nullable=False)
     description = Column(String, default="")
     completed = Column(Boolean, default=False)
+    due_date = Column(String, nullable=True)
+    priority = Column(String, default="medium")
 
 class User(Base):
     __tablename__ = "users"
